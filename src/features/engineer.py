@@ -7,7 +7,7 @@ Steps:
 2. Merge wb and imf on country + year
 3. Merge with crisis labels
 4. Handle missing values
-5. Create lag features (t-1, t-2) for key indicators
+5. Create lag features (t-1, t-2)
 6. Create rolling average features (3-year window)
 7. Save final dataset back to S3
 

@@ -4,7 +4,7 @@ An end-to-end machine learning pipeline that predicts currency crises in emergin
 
 ## Overview
 
-Currency crises — sudden sharp depreciations of a country's exchange rate — can devastate economies, wipe out savings, and trigger recessions. This project builds an early warning system (EWS) that identifies at-risk countries 1-2 years before a crisis using publicly available macroeconomic data.
+Currency crises are sudden sharp depreciations of a country's exchange rate that can devastate economies, wipe out savings, and trigger recessions. This project builds an early warning system (EWS) that identifies at-risk countries 1-2 years before a crisis using publicly available macroeconomic data.
 
 The system covers 30 emerging market economies across Latin America, Asia, Africa, and Eastern Europe from 1990 to 2017. Crisis labels are based on Laeven & Valencia (2020) and Frankel & Rose (1996).
 
@@ -17,7 +17,7 @@ The system covers 30 emerging market economies across Latin America, Asia, Afric
 | XGBoost | 0.800 | 0.250 | 0.025 |
 | Random Forest | 0.794 | 0.500 | 0.047 |
 
-Logistic Regression outperformed all tree-based models — consistent with economics literature finding that simpler linear models generalize better for rare macroeconomic events on small panel datasets. The model caught 3 out of 4 crisis episodes in the test set (2008–2017) with an AUC of 0.909.
+Logistic Regression outperformed all tree-based models, consistent with economics literature finding that simpler linear models generalize better for rare macroeconomic events on small panel datasets. The model caught 3 out of 4 crisis episodes in the test set (2008–2017) with an AUC of 0.909.
 
 ## SHAP Explainability
 
@@ -27,7 +27,7 @@ The top features driving crisis risk predictions:
 
 ![SHAP Summary Plot](outputs/shap/shap_summary.png)
 
-The waterfall plot below explains a single prediction — Argentina 1995 (Tequila Effect contagion from Mexico's 1994 crisis):
+The waterfall plot below explains a single prediction - Argentina 1995 (Tequila Effect contagion from Mexico's 1994 crisis):
 
 ![SHAP Waterfall](outputs/shap/shap_waterfall.png)
 
@@ -121,6 +121,9 @@ The Lambda handler accepts a POST request and returns a risk score with top cont
   ]
 }
 ```
+## Deployment Note
+
+The data pipeline and models are fully operational and run against AWS S3. The Lambda API (`src/api/lambda_handler.py`) is production-ready but not currently deployed to AWS. To deploy, package the handler with its dependencies and connect to API Gateway following standard AWS Lambda deployment steps.
 
 ## Limitations
 
